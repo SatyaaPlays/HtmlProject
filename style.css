@@ -1,0 +1,229 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;700&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+#logoimg{
+    height:100px;
+     width:120px;
+}
+
+img{
+    height:350px;
+     width:100px;
+}
+
+.buy{
+    display: flex;
+    flex-direction: row;
+}
+
+.buyItem{
+    margin-left: 30px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    padding: 15px 0px;
+    background-color: lightskyblue;
+}
+
+header #menu {
+    margin-left: 25px;
+}
+
+header #social-links {
+    margin-right: 25px;
+}
+
+header ul {
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+
+ul > li {
+    list-style: none;
+}
+
+nav ul li {
+    display: flex;
+    align-items: center;
+}
+
+#logo {
+    margin: 0 auto;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+#menu li {
+    padding: 10px;
+}
+
+#social-links li {
+    padding: 10px;
+}
+
+#main {
+    display: flex;
+    background-color:aliceblue;
+}
+
+aside ul{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+aside li {
+    padding:0;
+}
+
+aside ul a {
+    display: block;
+    padding: 10px;
+    border-bottom: 1px solid lightskyblue;
+}
+
+aside {
+    flex:0 0 20vw;
+    border-top: none;
+    flex-wrap: wrap;
+    background-color: aliceblue;
+}
+
+article {
+    padding: 10px;
+}
+
+.ad-img {
+    padding: 10px 15px;
+}
+
+.ad-img img{
+    width: 100%;
+}
+
+
+.service-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.service-box {
+    border: 1px solid #eee;
+    padding: 10px;
+    flex-basis: 32%;
+    max-width: 370px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.service-box p {
+    margin-top: 0;
+}
+
+.service-box h3 {
+    margin-bottom: 10px;
+}
+
+.service-box img {
+    width:100%;
+}
+
+footer {
+    background-color: lightskyblue;
+    text-align: center;
+    padding: 15px 0px;
+}
+
+.btn {
+    align-self: flex-start;
+    margin-top: auto;
+}
+
+.btn a:hover {
+    background-color: lightskyblue;
+    color: black;
+    transition: all ease-in-out 250ms;
+}
+
+.btn a {
+    border: 2px solid lightskyblue;
+    padding: 10px;
+    display: block;
+}
+
+.player-info-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.player-info-card img {
+    width: 60%;
+}
+
+.player-info-card {
+    border: 1px solid #eee;
+    padding: 10px;
+    flex-basis: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.player-info-img {
+    text-align: center;
+}
+
+@media  screen and (max-width:850px) {
+    aside {
+        flex:0 0 30vw;
+    }
+
+    .service-box {
+        flex-basis: 48%;
+    }
+}
+
+@media  screen and (max-width:600px) {
+    header {
+        flex-direction: column;
+    }
+
+    #logo {
+        order: -1;
+    }
+
+    #main {
+        flex-direction: column;
+    }
+
+    article {
+        order: -1;
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+    .service-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
