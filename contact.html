@@ -291,7 +291,7 @@ body, button, input {
     </aside>
   <!-- </div> -->
     <article class="form">
-    <div class="background">
+    <form onsubmit="validate()" class="background">
         <div class="container">
           <div class="screen">
             <div class="screen-header">
@@ -317,27 +317,31 @@ body, button, input {
               <div class="screen-body-item">
                 <div class="app-form">
                   <div class="app-form-group">
-                    <input class="app-form-control" placeholder="NAME" value="">
+                    <input class="app-form-control" placeholder="NAME" id="uname" maxlength="50">
+                    <span id="error1"></span>
                   </div>
                   <div class="app-form-group">
-                    <input class="app-form-control" placeholder="EMAIL">
+                    <input class="app-form-control" id="email" placeholder="EMAIL" maxlength="50">
+                    <span id="error2"></span>
                   </div>
                   <div class="app-form-group">
-                    <input class="app-form-control" placeholder="CONTACT NO">
+                    <input class="app-form-control" id="phone" placeholder="CONTACT NO" maxlength="10">
+                    <span id="error3"></span>
                   </div>
                   <div class="app-form-group message">
-                    <input class="app-form-control" placeholder="MESSAGE">
+                    <input class="app-form-control" id="msg" placeholder="MESSAGE" maxlength="200">
+                    <span id="error4"></span>
                   </div>
                   <div class="app-form-group buttons">
                     <button class="app-form-button">CANCEL</button>
-                    <button class="app-form-button">SEND</button>
+                    <button class="app-form-button" onclick="DataValidate()">SEND</button>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </form>
     </article>
   </div>
       <footer>
@@ -347,7 +351,56 @@ body, button, input {
 
     <script src="Library/jquery-3.6.4.min.js"></script>
     <script>
-      
+      let nameRegex = "/^[a-z]+$/i";
+      let emailRegex = "/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/";
+      let phoneRegex = "/^\d+$/";
+      let name = $('#phone').val();
+      let nameError = $('#error1');
+      let email = $('#email').val();
+      let emailError = $('#error2');
+      let phone = $('#phone').val();
+      let phoneError = $('#error3');
+      let msg = $('#msg').val();
+      let msgError = $('#error4');
+
+      $(function DataValidate(){debugger
+        if (name == "") {
+          return false;
+          nameError.text = "Please enter correct name";
+        }
+        else{
+          return true;
+        }
+
+        if (email == "") {
+          return false;
+          emailError.text = "Please enter correct email";
+        }
+        else{
+          return true;
+        }
+
+        if (phone == "") {
+          return false;
+          phoneError.text = "Please enter correct number";
+        }
+        else{
+          return true;
+        }
+
+        if (msg == "") {
+          return false;
+          msgError.text = "Please enter a message";
+        }
+        else{
+          return true;
+        }
+      });
+ 
+      $(function Validate(){
+        DataValidate();
+        window.open("https://www.google.com")
+      })
     </script>
 </body>
 </html>
