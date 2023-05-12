@@ -370,7 +370,7 @@ body, button, input {
           nameError.text("Please enter name");
           return false;
         }
-        else if(nameRegex.test(name)){
+        else if(!nameRegex.test(name)){
           nameError.text("Please enter correct name");
           return false;
         }
@@ -391,7 +391,7 @@ body, button, input {
           emailError.text("Please enter email");
           return false;
         }
-        else if(emailRegex.test(email)){
+        else if(!emailRegex.test(email)){
           emailError.text("Please enter correct email");
           return false;
         }
@@ -420,7 +420,7 @@ body, button, input {
           phoneError.text("Please enter number");
           return false;
         }
-        else if(phoneRegex.test(phone)){
+        else if(!phoneRegex.test(phone)){
           phoneError.text("Please enter correct number");
           return false;
         }
@@ -441,7 +441,7 @@ body, button, input {
           msgError.text("Please enter message");
           return false;
         }
-        else if(nameRegex.test(msg)){
+        else if(!nameRegex.test(msg)){
           msgError.text("Please enter proper message");
           return false;
         }
