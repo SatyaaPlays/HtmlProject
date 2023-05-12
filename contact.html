@@ -363,9 +363,10 @@ body, button, input {
       // let output3 = false;
 
       function NameValidate(){debugger
-      let nameRegex = new RegExp("/^[A-Za-z]+$/");
+      let nameRegex = new RegExp("^[A-Za-z]+$");
       let name = $('#uname').val();
       let nameError = $('#error1');
+      nameError.hide();
         if (name == "") {
           nameError.text("Please enter name");
           return false;
@@ -383,10 +384,11 @@ body, button, input {
         NameValidate();
       });
 
-      function EmailValidate(){
-      let emailRegex = new RegExp('/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/');
+      function EmailValidate(){debugger
+      let emailRegex = new RegExp('^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$');
       let email = $('#email').val();
       let emailError = $('#error2');
+      emailError.hide();
         if (email == "") {
           emailError.text("Please enter email");
           return false;
@@ -413,14 +415,15 @@ body, button, input {
       });
 
       function PhoneValidate(){debugger
-      let phoneRegex = new RegExp('/^[6-9][0-9]{9}$/');
+      let phoneRegex = new RegExp('^[6-9][0-9]{9}$');
       let phone = $('#phone').val();
       let phoneError = $('#error3');
+      phoneError.hide();
         if (phone == "") {
           phoneError.text("Please enter number");
           return false;
         }
-        else if(!phoneRegex.test(phone)){
+        else if(phoneRegex.test(phone) == false){
           phoneError.text("Please enter correct number");
           return false;
         }
@@ -434,15 +437,12 @@ body, button, input {
       });
 
       function MsgValidate(){
-      let nameRegex = new RegExp('/^[a-z]+$/i');
+      // let nameRegex = new RegExp('^[A-Za-z]+$');
       let msg = $('#msg').val();
       let msgError = $('#error4');
+      msgError.hide();
         if (msg == "") {
           msgError.text("Please enter message");
-          return false;
-        }
-        else if(!nameRegex.test(msg)){
-          msgError.text("Please enter proper message");
           return false;
         }
         else{
@@ -464,7 +464,7 @@ body, button, input {
         if ((output && output1 && output2 && output3) == false) {
           return false;
         } else {
-          window.open("https://www.google.com")
+          window.location.href='thankyou.html';
         }
       }
     </script>
