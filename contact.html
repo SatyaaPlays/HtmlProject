@@ -338,7 +338,8 @@ body, button, input {
                   </div>
                   <div class="app-form-group buttons">
                     <button class="app-form-button">CANCEL</button>
-                    <button class="app-form-button" onclick="DataValidate()">SEND</button>
+                    <button class="app-form-button">SEND</button>
+                    <!-- onclick="DataValidate()" -->
                   </div>
                 </div>
               </div>
@@ -356,78 +357,112 @@ body, button, input {
     <script src="Library/jquery-3.6.4.min.js"></script>
     <script>
 
-      let output = false;
-      let output1 = false;
-      let output2 = false;
-      let output3 = false;
+      // let output = false;
+      // let output1 = false;
+      // let output2 = false;
+      // let output3 = false;
 
-      function DataValidate(){debugger
-      let nameRegex = new RegExp('/^[a-z]+$/i');
-      let emailRegex = new RegExp('/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/');
-      let phoneRegex = new RegExp('/^\d+$/');
+      function NameValidate(){debugger
+      let nameRegex = new RegExp("/^[A-Za-z]+$/");
       let name = $('#uname').val();
       let nameError = $('#error1');
-      let email = $('#email').val();
-      let emailError = $('#error2');
-      let phone = $('#phone').val();
-      let phoneError = $('#error3');
-      let msg = $('#msg').val();
-      let msgError = $('#error4');
-
         if (name == "") {
           nameError.text("Please enter name");
-          output = false;
+          return false;
         }
         else if(nameRegex.test(name)){
           nameError.text("Please enter correct name");
-          output = false;
+          return false;
         }
         else{
-          output = true;
+          return true;
         }
+      }
+      
+      $('#uname').blur(function(){
+        NameValidate();
+      });
 
+      function EmailValidate(){
+      let emailRegex = new RegExp('/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/');
+      let email = $('#email').val();
+      let emailError = $('#error2');
         if (email == "") {
           emailError.text("Please enter email");
-          output1 = false;
+          return false;
         }
         else if(emailRegex.test(email)){
           emailError.text("Please enter correct email");
-          output1 = false;
+          return false;
+        }
+        else if(!email.includes('@')){
+          emailError.text("Please enter valid EmailId");
+          return false;
+        }
+        else if(email.endsWith('@')){
+          emailError.text("Please enter valid EmailId");
+          return false;
         }
         else{
-          output1 = true;
+          return true;
         }
+      }
 
+      $('#email').blur(function(){
+        EmailValidate();
+      });
+
+      function PhoneValidate(){debugger
+      let phoneRegex = new RegExp('/^[6-9][0-9]{9}$/');
+      let phone = $('#phone').val();
+      let phoneError = $('#error3');
         if (phone == "") {
           phoneError.text("Please enter number");
-          output2 = false;
+          return false;
         }
         else if(phoneRegex.test(phone)){
           phoneError.text("Please enter correct number");
-          output2 = false;
+          return false;
         }
         else{
-          output2 = true;
+          return true;
         }
+      }
 
+      $('#phone').blur(function(){debugger
+        PhoneValidate();
+      });
+
+      function MsgValidate(){
+      let nameRegex = new RegExp('/^[a-z]+$/i');
+      let msg = $('#msg').val();
+      let msgError = $('#error4');
         if (msg == "") {
           msgError.text("Please enter message");
-          output3 = false;
+          return false;
         }
         else if(nameRegex.test(msg)){
           msgError.text("Please enter proper message");
-          output3 = false;
+          return false;
         }
         else{
-          output3 = true;
+          return true;
         }
       }
- 
+
+      $('#msg').blur(function(){
+        MsgValidate();
+      });
+
+
       function validate(event){debugger
         event.preventDefault();
-        DataValidate();
-        if (output == false && output1 == false && output2 == false && output3 == false) {
-          return result;
+        let output = NameValidate();
+        let output1 = EmailValidate();
+        let output2 = PhoneValidate();
+        let output3 = MsgValidate();
+        if ((output && output1 && output2 && output3) == false) {
+          return false;
         } else {
           window.open("https://www.google.com")
         }
