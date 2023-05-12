@@ -252,6 +252,10 @@ body, button, input {
   }
 }
 
+.error{
+  color:#e01010;
+}
+
     </style>
 </head>
 <body>
@@ -291,7 +295,7 @@ body, button, input {
     </aside>
   <!-- </div> -->
     <article class="form">
-    <form onsubmit="validate()" class="background">
+    <form onsubmit="validate(event)" class="background">
         <div class="container">
           <div class="screen">
             <div class="screen-header">
@@ -318,19 +322,19 @@ body, button, input {
                 <div class="app-form">
                   <div class="app-form-group">
                     <input class="app-form-control" placeholder="NAME" id="uname" maxlength="50">
-                    <span id="error1"></span>
+                    <span id="error1" class="error"></span>
                   </div>
                   <div class="app-form-group">
                     <input class="app-form-control" id="email" placeholder="EMAIL" maxlength="50">
-                    <span id="error2"></span>
+                    <span id="error2" class="error"></span>
                   </div>
                   <div class="app-form-group">
                     <input class="app-form-control" id="phone" placeholder="CONTACT NO" maxlength="10">
-                    <span id="error3"></span>
+                    <span id="error3" class="error"></span>
                   </div>
                   <div class="app-form-group message">
                     <input class="app-form-control" id="msg" placeholder="MESSAGE" maxlength="200">
-                    <span id="error4"></span>
+                    <span id="error4" class="error"></span>
                   </div>
                   <div class="app-form-group buttons">
                     <button class="app-form-button">CANCEL</button>
@@ -351,10 +355,17 @@ body, button, input {
 
     <script src="Library/jquery-3.6.4.min.js"></script>
     <script>
-      let nameRegex = "/^[a-z]+$/i";
-      let emailRegex = "/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/";
-      let phoneRegex = "/^\d+$/";
-      let name = $('#phone').val();
+
+      let output = false;
+      let output1 = false;
+      let output2 = false;
+      let output3 = false;
+
+      function DataValidate(){debugger
+      let nameRegex = new RegExp('/^[a-z]+$/i');
+      let emailRegex = new RegExp('/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/');
+      let phoneRegex = new RegExp('/^\d+$/');
+      let name = $('#uname').val();
       let nameError = $('#error1');
       let email = $('#email').val();
       let emailError = $('#error2');
@@ -363,44 +374,64 @@ body, button, input {
       let msg = $('#msg').val();
       let msgError = $('#error4');
 
-      $(function DataValidate(){debugger
         if (name == "") {
-          return false;
-          nameError.text = "Please enter correct name";
+          nameError.text("Please enter name");
+          output = false;
+        }
+        else if(nameRegex.test(name)){
+          nameError.text("Please enter correct name");
+          output = false;
         }
         else{
-          return true;
+          output = true;
         }
 
         if (email == "") {
-          return false;
-          emailError.text = "Please enter correct email";
+          emailError.text("Please enter email");
+          output1 = false;
+        }
+        else if(emailRegex.test(email)){
+          emailError.text("Please enter correct email");
+          output1 = false;
         }
         else{
-          return true;
+          output1 = true;
         }
 
         if (phone == "") {
-          return false;
-          phoneError.text = "Please enter correct number";
+          phoneError.text("Please enter number");
+          output2 = false;
+        }
+        else if(phoneRegex.test(phone)){
+          phoneError.text("Please enter correct number");
+          output2 = false;
         }
         else{
-          return true;
+          output2 = true;
         }
 
         if (msg == "") {
-          return false;
-          msgError.text = "Please enter a message";
+          msgError.text("Please enter message");
+          output3 = false;
+        }
+        else if(nameRegex.test(msg)){
+          msgError.text("Please enter proper message");
+          output3 = false;
         }
         else{
-          return true;
+          output3 = true;
         }
-      });
+      }
  
-      $(function Validate(){
+      function validate(event){debugger
+        event.preventDefault();
         DataValidate();
-        window.open("https://www.google.com")
-      })
+        if (output == false && output1 == false && output2 == false && output3 == false) {
+          return result;
+        } else {
+          window.open("https://www.google.com")
+        }
+      }
     </script>
 </body>
 </html>
